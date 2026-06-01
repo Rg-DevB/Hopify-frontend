@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 180 84% 38%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 185 30% 94%;
+    --secondary-foreground: 180 60% 25%;
+    --muted: 210 30% 96%;
+    --muted-foreground: 215 20% 52%;
+    --accent: 180 60% 92%;
+    --accent-foreground: 180 60% 25%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 20% 90%;
+    --input: 214 20% 90%;
+    --ring: 180 84% 38%;
+    --radius: 0.75rem;
+
+    /* Brand tokens */
+    --teal-50: #f0fdfa;
+    --teal-100: #ccfbf1;
+    --teal-200: #99f6e4;
+    --teal-400: #2dd4bf;
+    --teal-500: #14b8a6;
+    --teal-600: #0d9488;
+    --teal-700: #0f766e;
+    --teal-900: #134e4a;
+    --cyan-400: #22d3ee;
+    --cyan-500: #06b6d4;
+    --cyan-600: #0891b2;
+  }
+}
+
+@layer base {
+  * { @apply border-border; }
+  body {
+    @apply bg-slate-50 text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+  /* Advanced Glassmorphism */
+  .glass {
+    @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border border-white/60 dark:border-slate-800/60 shadow-sm;
+  }
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04);
+  }
+  .dark .glass-card {
+    background: rgba(15, 23, 42, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  /* Brand gradients */
+  .gradient-brand {
+    background: linear-gradient(135deg, #0d9488 0%, #0891b2 100%);
+  }
+  .gradient-brand-soft {
+    background: linear-gradient(135deg, #f0fdfa 0%, #ecfeff 100%);
+  }
+  .dark .gradient-brand-soft {
+    background: linear-gradient(135deg, rgba(13, 148, 136, 0.1) 0%, rgba(8, 145, 178, 0.1) 100%);
+  }
+
+  /* Premium Hover Effects */
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+  .hover-glow:hover {
+    @apply shadow-lg shadow-teal-500/20 -translate-y-0.5 border-teal-500/50;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 dark:bg-slate-800 rounded-full hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors;
+  }
+
+  /* Micro-animations */
+  .pulse-teal {
+    box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.4);
+    animation: pulse-ring 2s infinite;
+  }
+  @keyframes pulse-ring {
+    0% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(20, 184, 166, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(20, 184, 166, 0); }
+  }
+
+  .floating {
+    animation: floating 3s ease-in-out infinite;
+  }
+  @keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0px); }
+  }
+
+/* FullCalendar overrides */
+.fc-event {
+  cursor: pointer !important;
+  border-radius: 6px !important;
+  font-size: 0.72rem !important;
+  border: none !important;
+  background: linear-gradient(135deg, #0d9488, #0891b2) !important;
+  padding: 2px 6px !important;
+}
+.fc-toolbar-title {
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  color: #0f172a !important;
+}
+.fc-button {
+  background: linear-gradient(135deg, #0d9488, #0891b2) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: 500 !important;
+  box-shadow: 0 2px 8px rgba(13,148,136,0.25) !important;
+}
+.fc-button:hover {
+  background: linear-gradient(135deg, #0f766e, #0d9488) !important;
+  box-shadow: 0 4px 12px rgba(13,148,136,0.35) !important;
+}
+.fc-button-active {
+  background: linear-gradient(135deg, #0f766e, #0d9488) !important;
+}
+.fc-col-header-cell {
+  background: #f8fafc !important;
+  font-weight: 600 !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  color: #64748b !important;
+}
+.fc-today-button { opacity: 0.85 !important; }
+.fc-daygrid-day.fc-day-today { background: rgba(20,184,166,0.05) !important; }
+.fc-daygrid-day-number { color: #0f172a !important; font-weight: 500 !important; }
